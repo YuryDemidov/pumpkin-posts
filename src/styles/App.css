@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.App {
+  max-width: 800px;
+  margin: 0 auto;
+}
