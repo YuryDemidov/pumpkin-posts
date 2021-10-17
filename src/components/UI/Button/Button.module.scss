@@ -1,0 +1,39 @@
+.button {
+  padding: 5px 8px;
+  font-weight: 700;
+  font-size: 14px;
+  background: none;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 5px;
+  cursor: pointer;
+  transition-property: background-color, color;
+  transition-duration: 0.3s;
+}
+
+.danger {
+  color: var(--danger);
+  border-color: var(--danger);
+
+  &:hover {
+    color: var(--light);
+    background-color: var(--danger);
+  }
+}
+
+.success {
+  color: var(--success);
+  border-color: var(--success);
+
+  &:hover {
+    color: var(--light);
+    background-color: var(--success);
+  }
+}
+
+.button:disabled {
+  color: var(--dark-dim);
+  background: none;
+  border-color: var(--dark-dim);
+  cursor: auto;
+}

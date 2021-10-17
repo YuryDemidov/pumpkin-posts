@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --main: #226677;
+  --danger: #992233;
+  --success: #289932;
+  --light: #f6f6fa;
+  --dark-dim: rgba(0, 0, 0, 0.5);
+  --light-dim: rgba(0, 0, 0, 0.1);
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background-color: var(--light);
+}
+
+.App {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.post {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  padding: 15px;
+  border: 2px solid var(--main);
+  border-radius: 10px;
+  box-shadow: 1px 8px 10px var(--light-dim);
+
+  &__title,
+  &__text {
+    margin: 0;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__form {
+    display: flex;
+  }
+
+  &__input {
+    margin-right: 16px;
+  }
+}

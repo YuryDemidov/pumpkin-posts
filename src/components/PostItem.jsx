@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Button from './UI/Button/Button';
+
 const PostItem = ({ post, number }) => {
   return (
     <div className='post'>
@@ -8,7 +10,7 @@ const PostItem = ({ post, number }) => {
         <p className='post__text'>{post.text}</p>
       </div>
       <div className='post__buttons'>
-        <button className='post__remove-button' type='button'>Удалить</button>
+        <Button type='button' buttonType='danger'>Удалить</Button>
       </div>
     </div>
   )
