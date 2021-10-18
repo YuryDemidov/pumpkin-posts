@@ -1,21 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-import Button from './UI/Button/Button';
-import Input from './UI/Input/Input';
+import Button from './UI/Button/Button'
+import Input from './UI/Input/Input'
 
-const PostForm = ({ posts, setPosts }) => {
+const PostForm = ({ createPost }) => {
   const [post, setPost] = useState({
     title: '',
     text: ''
   })
 
-  const addNewPost = (evt) => {
+  const addNewPost = evt => {
     evt.preventDefault()
-    const newPost = {
-      ...post,
-      id: Date.now()
+    if (!post.title || !post.text) {
+      return
     }
-    setPosts([...posts, newPost])
+
+    createPost({
+      ...post,
+      date: new Date(),
+      id: Date.now()
+    })
     setPost({ title: '', text: '' })
   }
 
@@ -37,9 +41,11 @@ const PostForm = ({ posts, setPosts }) => {
         aria-label='Текст вашего поста'
         onChange={evt => setPost({ ...post, text: evt.target.value })}
       />
-      <Button buttonType='success' isSubmitter onClick={addNewPost}>Создать пост</Button>
+      <Button buttonType='success' isSubmitter onClick={addNewPost}>
+        Создать пост
+      </Button>
     </form>
-  );
-};
+  )
+}
 
-export default PostForm;
+export default PostForm

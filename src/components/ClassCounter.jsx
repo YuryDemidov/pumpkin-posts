@@ -23,8 +23,12 @@ export default class ClassCounter extends React.Component {
     return (
       <div>
         <p>{this.state.count}</p>
-        <button onClick={this.increment} type='button'>+</button>
-        <button onClick={this.decrement} type='button'>-</button>
+        <button onClick={this.increment} type='button'>
+          +
+        </button>
+        <button onClick={this.decrement} type='button'>
+          -
+        </button>
       </div>
     )
   }
