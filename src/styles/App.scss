@@ -5,10 +5,12 @@
 :root {
   --main: #226677;
   --danger: #992233;
+  --light-danger: #df9f9d;
   --success: #289932;
   --white: #ffffff;
   --light: #f6f6fa;
   --dark-dim: rgba(0, 0, 0, 0.5);
+  --dim: rgba(0, 0, 0, 0.3);
   --light-dim: rgba(0, 0, 0, 0.1);
 }
 
@@ -26,7 +28,8 @@ body {
 .App {
   max-width: 800px;
   margin: 0 auto;
-  padding: 30px 0;
+  padding-top: 10px;
+  padding-bottom: 30px;
 }
 
 .main-heading {
@@ -51,6 +54,8 @@ body {
   &__title,
   &__text {
     margin-bottom: 8px;
+    padding-right: 15px;
+    word-break: break-word;
   }
 
   &__date {
@@ -78,4 +83,20 @@ body {
     margin-right: auto;
     margin-left: 10px;
   }
+}
+
+.modal-enter {
+  opacity: 0;
+}
+.modal-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+
+.modal-content-enter {
+  transform: translateY(-10vh);
+}
+.modal-content-enter-active {
+  transform: none;
+  transition: transform 300ms;
 }

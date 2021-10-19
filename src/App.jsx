@@ -4,6 +4,7 @@ import PageTitle from './components/UI/Title/PageTitle'
 import PostsList from './components/PostsList'
 import PostForm from './components/PostForm'
 import Filters from './components/Filters'
+import Modal from './components/UI/Modal/Modal'
 import './styles/App.scss'
 
 const SORTING_OPTIONS = [
@@ -24,6 +25,7 @@ const INITIAL_POSTS = [
 function App() {
   const [posts, setPosts] = useState(INITIAL_POSTS)
   const [filter, setFilter] = useState({ sorting: SORTING_OPTIONS[0], term: '' })
+  const [modalContent, setModalContent] = useState('')
 
   const createPost = newPost => {
     setPosts([newPost, ...posts])
@@ -61,10 +63,11 @@ function App() {
 
   return (
     <div className='App'>
-      <PostForm createPost={createPost} />
+      <PostForm createPost={createPost} showError={setModalContent} />
       <PageTitle>Список постов</PageTitle>
       <Filters filter={filter} setFilter={setFilter} sortingOptions={SORTING_OPTIONS} />
       <PostsList posts={filteredPosts} removePost={removePost} />
+      <Modal content={modalContent} setContent={setModalContent} />
     </div>
   )
 }

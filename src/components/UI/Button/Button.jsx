@@ -3,9 +3,13 @@ import cn from 'classnames'
 
 import classes from './Button.module.scss'
 
-const Button = ({ children, buttonType, isSubmitter, ...props }) => {
+const Button = ({ children, buttonType, isSubmitter, className, ...props }) => {
   return (
-    <button className={cn(classes.button, classes[buttonType])} type={isSubmitter ? 'submit' : 'button'} {...props}>
+    <button
+      className={cn(classes.button, classes[buttonType], className)}
+      type={isSubmitter ? 'submit' : 'button'}
+      {...props}
+    >
       {children}
     </button>
   )
