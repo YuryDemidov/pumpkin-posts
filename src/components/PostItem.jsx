@@ -11,7 +11,7 @@ const PostItem = ({ post, number, removePost }) => {
         <h2 className='post__title'>
           {number}. {post.title}
         </h2>
-        <p className='post__text'>{post.text}</p>
+        <p className='post__text'>{post.body}</p>
         <p className='post__date'>
           {postDate.toLocaleTimeString().slice(0, 5)} {postDate.toLocaleDateString()}
         </p>

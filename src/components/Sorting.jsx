@@ -1,33 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import Select from './UI/Select/Select'
 
-const Sorting = ({ onChange }) => {
-  const sortingOptions = [
-    { value: 'new', name: 'Сначала новые' },
-    { value: 'old', name: 'Сначала старые' },
-    { value: 'random', name: 'Случайная' },
-    { value: 'alphabetical', name: 'По алфавиту' }
-  ]
-  const [selectedSorting, setSelectedSorting] = useState(sortingOptions[0])
-
-  const changeSorting = sortingValue => {
-    setSelectedSorting(sortingOptions.find(sorting => sorting.value === sortingValue))
-    onChange(sortingValue)
-  }
-
+const Sorting = ({ sortingOptions, selectedSorting, onChange }) => {
   return (
-    <div className='sorting'>
+    <>
       <label htmlFor='postsSorting'>Сортировка</label>
       <Select
         id='postsSorting'
-        className='sorting__select'
+        className='filters__sorting'
         name='posts-sorting'
         options={sortingOptions}
         value={selectedSorting.value}
-        onChange={changeSorting}
+        onChange={onChange}
       />
-    </div>
+    </>
   )
 }
 

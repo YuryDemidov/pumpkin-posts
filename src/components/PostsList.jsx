@@ -8,7 +8,7 @@ const PostsList = ({ posts, removePost }) => {
       {posts.length ? (
         posts.map((post, i) => <PostItem post={post} number={i + 1} removePost={removePost} key={post.id} />)
       ) : (
-        <p>Постов пока нет</p>
+        <p>Посты не найдены</p>
       )}
     </>
   )

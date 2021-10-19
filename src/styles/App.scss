@@ -19,6 +19,7 @@ body {
 }
 
 #root {
+  min-height: 100vh;
   background-image: radial-gradient(ellipse at 20% 40%, var(--light) 20%, var(--white) 30%,var(--white) 40%, var(--light) 90%);
 }
 
@@ -68,8 +69,13 @@ body {
   }
 }
 
-.sorting {
-  &__select {
+.filters {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  &__sorting {
+    margin-right: auto;
     margin-left: 10px;
   }
 }

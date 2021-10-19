@@ -6,12 +6,12 @@ import Input from './UI/Input/Input'
 const PostForm = ({ createPost }) => {
   const [post, setPost] = useState({
     title: '',
-    text: ''
+    body: ''
   })
 
   const addNewPost = evt => {
     evt.preventDefault()
-    if (!post.title || !post.text) {
+    if (!post.title || !post.body) {
       return
     }
 
@@ -20,7 +20,7 @@ const PostForm = ({ createPost }) => {
       date: new Date(),
       id: Date.now()
     })
-    setPost({ title: '', text: '' })
+    setPost({ title: '', body: '' })
   }
 
   return (
@@ -36,10 +36,10 @@ const PostForm = ({ createPost }) => {
       <Input
         className='post__input'
         type='text'
-        value={post.text}
+        value={post.body}
         placeholder='Текст'
         aria-label='Текст вашего поста'
-        onChange={evt => setPost({ ...post, text: evt.target.value })}
+        onChange={evt => setPost({ ...post, body: evt.target.value })}
       />
       <Button buttonType='success' isSubmitter onClick={addNewPost}>
         Создать пост
