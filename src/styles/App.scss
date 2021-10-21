@@ -20,8 +20,13 @@ body {
   margin: 0;
 }
 
+body {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
 #root {
-  min-height: 100vh;
+  min-height: -webkit-fill-available;
   background-image: radial-gradient(ellipse at 20% 40%, var(--light) 20%, var(--white) 30%,var(--white) 40%, var(--light) 90%);
 }
 
@@ -99,4 +104,25 @@ body {
 .modal-content-enter-active {
   transform: none;
   transition: transform 300ms;
+}
+
+.post-enter {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+.post-enter-active {
+  opacity: 1;
+  transform: none;
+  transition-property: opacity, transform;
+  transition-duration: 700ms, 250ms;
+}
+.post-exit {
+  opacity: 1;
+  transform: none;
+}
+.post-exit-active {
+  opacity: 0;
+  transform: rotateX(90deg) scaleX(1.5);
+  transition-property: opacity, transform;
+  transition-duration: 500ms, 250ms;
 }
