@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Button from './UI/Button/Button'
 import Input from './UI/Input/Input'
 
-const PostForm = ({ createPost, showError }) => {
+const PostForm = ({ createPost, showError, isDisabled }) => {
   const [post, setPost] = useState({
     title: '',
     body: ''
@@ -64,7 +64,7 @@ const PostForm = ({ createPost, showError }) => {
           aria-label='Текст вашего поста'
           onChange={evt => setPost({ ...post, body: evt.target.value })}
         />
-        <Button buttonType='success' isSubmitter onClick={addNewPost}>
+        <Button buttonType='success' isSubmitter disabled={isDisabled} onClick={addNewPost}>
           Отправить
         </Button>
       </form>

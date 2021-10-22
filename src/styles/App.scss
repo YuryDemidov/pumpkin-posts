@@ -1,9 +1,12 @@
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 :root {
-  --main: #226677;
+  --main: #236277;
+  --additional: #4ac56a;
   --danger: #992233;
   --light-danger: #df9f9d;
   --success: #289932;
