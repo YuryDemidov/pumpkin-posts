@@ -1,8 +1,13 @@
 import axios from 'axios'
 
 export default class PostService {
-  static async getAll() {
-    const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
+  static async getAll(page = 1, limit = 10) {
+    const response = await axios.get(`https://jsonplaceholder.typicode.com/posts`, {
+      params: {
+        _limit: limit,
+        _page: page
+      }
+    })
     const posts = response.data
 
     posts.map(post => {
@@ -13,6 +18,6 @@ export default class PostService {
       return post
     })
 
-    return posts
+    return response
   }
 }

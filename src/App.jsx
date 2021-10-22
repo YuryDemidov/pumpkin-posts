@@ -9,6 +9,8 @@ import { useFilteredPosts } from './hooks/usePosts'
 import PostService from './api/PostService'
 import './styles/App.scss'
 import Loader from './components/UI/Loader/Loader'
+import { useFetch } from './hooks/useFetch'
+import { getPagesCount } from './utils/getPagesCount'
 
 const SORTING_OPTIONS = [
   { value: 'new', name: 'Сначала новые' },
@@ -29,7 +31,14 @@ function App() {
   const [posts, setPosts] = useState(INITIAL_POSTS)
   const [filter, setFilter] = useState({ sorting: SORTING_OPTIONS[0], term: '' })
   const [modalContent, setModalContent] = useState('')
-  const [isShowLoader, setIsShowLoader] = useState(false)
+  const [totalPages, setTotalPages] = useState(0)
+  const [page, setPage] = useState(1)
+  const [postsPerPage, setPostsPerPage] = useState(10)
+  const [fetchPosts, isShowLoader] = useFetch(async () => {
+    const { data: posts, headers } = await PostService.getAll(page, postsPerPage)
+    setPosts(posts)
+    setTotalPages(getPagesCount(headers['x-total-count'], postsPerPage))
+  }, setModalContent)
   const filteredPosts = useFilteredPosts(posts, filter.sorting, filter.term)
 
   useEffect(() => {
@@ -41,24 +50,6 @@ function App() {
   }
   const removePost = id => {
     setPosts(posts.filter(post => id !== post.id))
-  }
-
-  const fetchPosts = async () => {
-    setIsShowLoader(true)
-    try {
-      const posts = await PostService.getAll()
-      setPosts(posts)
-    } catch (error) {
-      setModalContent(
-        <>
-          Ошибка!
-          <br />
-          {error.message}
-        </>
-      )
-    } finally {
-      setIsShowLoader(false)
-    }
   }
 
   return (
