@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Pumpkin Posts
+
+This app was created for educational purposes. It displays the list of posts which was received from https://jsonplaceholder.typicode.com/. The posts are paginated, they can be sorted or filtered via search input. New posts can be added via form.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
