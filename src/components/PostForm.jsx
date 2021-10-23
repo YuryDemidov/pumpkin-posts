@@ -64,7 +64,7 @@ const PostForm = ({ createPost, showError, isDisabled }) => {
           aria-label='Текст вашего поста'
           onChange={evt => setPost({ ...post, body: evt.target.value })}
         />
-        <Button buttonType='success' isSubmitter disabled={isDisabled} onClick={addNewPost}>
+        <Button buttonType='primary' isSubmitter disabled={isDisabled} onClick={addNewPost}>
           Отправить
         </Button>
       </form>

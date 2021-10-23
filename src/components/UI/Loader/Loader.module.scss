@@ -13,29 +13,18 @@
   width: 95px;
   height: 95px;
   margin: 20px auto;
-  border: 5px dashed var(--main);
+  border: 5px groove var(--main);
   border-radius: 50%;
   animation-name: rotate;
   animation-timing-function: linear;
   animation-duration: 2500ms;
   animation-iteration-count: infinite;
 
-  &::before,
-  &::after {
+  &::before {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
-  }
-
-  &::before {
-    width: 28px;
-    height: 120px;
-    background-color: var(--white);
-    transform: translate(-50%, -50%);
-  }
-
-  &::after {
     width: 65px;
     height: 65px;
     margin-top: -33px;

@@ -5,13 +5,18 @@
 }
 
 :root {
-  --main: #236277;
+  --main: #83a2a7;
   --additional: #4ac56a;
-  --danger: #992233;
+  --pumpkin: #ea7005;
+  --danger: #f96469;
   --light-danger: #df9f9d;
-  --success: #289932;
+  --success: #88d982;
   --white: #ffffff;
-  --light: #f6f6fa;
+  --light: #e1e1e4;
+  --light-transparent: rgba(234, 234, 240, 0.5);
+  --light-x-transparent: rgba(234, 234, 240, 0.2);
+  --dark: #ea7005;
+  --x-dark-dim: rgba(0, 0, 0, 0.8);
   --dark-dim: rgba(0, 0, 0, 0.5);
   --dim: rgba(0, 0, 0, 0.3);
   --light-dim: rgba(0, 0, 0, 0.1);
@@ -26,21 +31,69 @@ body {
 body {
   overflow: scroll;
   overflow-x: hidden;
+  color: var(--light);
+  background-color: var(--x-dark-dim);
 }
 
 #root {
   min-height: -webkit-fill-available;
-  background-image: radial-gradient(ellipse at 20% 40%, var(--light) 20%, var(--white) 30%,var(--white) 40%, var(--light) 90%);
 }
 
-.App {
+.page {
+  position: relative;
   max-width: 800px;
   margin: 0 auto;
   padding-top: 10px;
   padding-bottom: 30px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: -1;
+    width: 100vw;
+    min-height: calc(100vh - 69px);
+    height: 100%;
+    background-image: radial-gradient(ellipse at 20% 40%, var(--dark-dim) 20%, var(--x-dark-dim) 30%,var(--x-dark-dim) 40%, var(--dim) 80%);
+    transform: translateX(-50%);
+  }
+}
+
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  max-width: 100%;
+  height: auto;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 4vw;
+  background-color: var(--x-dark-dim);
+  border-bottom: 1px solid var(--light);
 }
 
 .main-heading {
+  font-size: 36px;
+}
+
+.link {
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--light);
+  border-bottom: 1px solid var(--light-transparent);
+  transition-property: border-color, color;
+  transition-duration: 0.3s;
+
+  &:hover {
+    color: var(--pumpkin);
+    border-color: var(--pumpkin);
+  }
 }
 
 .post {
@@ -51,7 +104,7 @@ body {
   padding: 15px;
   border: 2px solid var(--main);
   border-radius: 10px;
-  box-shadow: 1px 8px 10px var(--light-dim);
+  box-shadow: 0 1px 20px 2px var(--light-transparent);
 
   &__title,
   &__text,
@@ -74,11 +127,32 @@ body {
   &__form {
     display: flex;
     padding-bottom: 30px;
-    border-bottom: 1px solid var(--dark-dim);
+    border-bottom: 1px solid var(--light);
   }
 
   &__input {
     margin-right: 16px;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__button {
+    display: inline-block;
+    min-width: 90px;
+    margin: 4px 0;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    text-decoration: none;
+  }
+
+  &__comments {
+    margin: 0;
+    margin-top: 15px;
+    padding: 0;
+    list-style: none;
   }
 }
 
@@ -93,9 +167,58 @@ body {
   }
 }
 
+.single-post {
+  margin-bottom: 80px;
+
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  &__title {
+    margin-right: 16px;
+    text-align: left;
+  }
+
+  &__date {
+    min-width: 120px;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  &__text {
+    font-size: 20px;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+  }
+}
+
+.comment {
+  margin: 0;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--light-transparent);
+
+  &__text {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+
+  &__author {
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+}
+
 .modal-enter {
   opacity: 0;
 }
+
 .modal-enter-active {
   opacity: 1;
   transition: opacity 300ms;
@@ -104,6 +227,7 @@ body {
 .modal-content-enter {
   transform: translateY(-10vh);
 }
+
 .modal-content-enter-active {
   transform: none;
   transition: transform 300ms;
@@ -113,19 +237,32 @@ body {
   opacity: 0;
   transform: translateY(-100%);
 }
+
 .post-enter-active {
   opacity: 1;
   transform: none;
   transition-property: opacity, transform;
   transition-duration: 700ms, 250ms;
 }
+
 .post-exit {
   opacity: 1;
   transform: none;
 }
+
 .post-exit-active {
   opacity: 0;
   transform: rotateX(90deg) scaleX(1.5);
   transition-property: opacity, transform;
   transition-duration: 500ms, 250ms;
+}
+
+.about-page {
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.error-page {
+  text-align: center;
+  font-size: 30px;
 }

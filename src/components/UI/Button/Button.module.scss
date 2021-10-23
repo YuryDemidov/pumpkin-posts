@@ -1,5 +1,6 @@
 .button {
   padding: 5px 8px;
+  font-family: Arial, sans-serif;
   font-weight: 700;
   font-size: 14px;
   background: none;
@@ -11,13 +12,23 @@
   transition-duration: 0.3s;
 }
 
-.danger {
-  color: var(--danger);
-  border-color: var(--danger);
+.primary {
+  color: var(--pumpkin);
+  border-color: var(--pumpkin);
 
   &:hover {
-    color: var(--light);
-    background-color: var(--danger);
+    color: var(--white);
+    background-color: var(--pumpkin);
+  }
+}
+
+.danger {
+  color: var(--light);
+  border-color: var(--light);
+
+  &:hover {
+    color: var(--white);
+    border-color: var(--white);
   }
 }
 
@@ -31,17 +42,10 @@
   }
 }
 
-.button:disabled {
-  color: var(--dark-dim);
-  background: none;
-  border-color: var(--dark-dim);
-  cursor: auto;
-}
-
 .close {
   width: 22px;
   height: 22px;
-  border-color: var(--light-danger);
+  border-color: var(--light);
   border-radius: 6px;
 
   &::before,
@@ -51,7 +55,7 @@
     top: 50%;
     left: 50%;
     width: 12px;
-    border: 1px solid var(--light-danger);
+    border: 1px solid var(--light);
     transition: border-color 0.3s;
   }
 
@@ -66,6 +70,13 @@
   &:hover,
   &:hover::before,
   &:hover::after, {
-    border-color: var(--danger);
+    border-color: var(--white);
   }
+}
+
+.button:disabled {
+  color: var(--dark-dim);
+  background: none;
+  border-color: var(--dark-dim);
+  cursor: auto;
 }

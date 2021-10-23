@@ -1,10 +1,12 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
+import cn from 'classnames'
 
 import Button from './UI/Button/Button'
+import classes from './UI/Button/Button.module.scss'
+import outputPostDate from '../utils/outputPostDate'
 
 const PostItem = ({ post, number, removePost }) => {
-  const postDate = new Date(post.date)
-
   return (
     <article className='post'>
       <div className='post__content'>
@@ -12,12 +14,13 @@ const PostItem = ({ post, number, removePost }) => {
           {number}. {post.title}
         </h2>
         <p className='post__text'>{post.body}</p>
-        <p className='post__date'>
-          {postDate.toLocaleTimeString().slice(0, 5)} {postDate.toLocaleDateString()}
-        </p>
+        <time className='post__date'>{outputPostDate(new Date(post.date))}</time>
       </div>
       <div className='post__buttons'>
-        <Button type='button' buttonType='danger' onClick={() => removePost(post.id)}>
+        <NavLink className={cn('post__button', classes.button, classes.primary)} to={`/posts/${post.initialId}`}>
+          Открыть
+        </NavLink>
+        <Button className='post__button' type='button' buttonType='danger' onClick={() => removePost(post.id)}>
           Удалить
         </Button>
       </div>

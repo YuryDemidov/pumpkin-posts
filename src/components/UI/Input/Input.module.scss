@@ -3,6 +3,20 @@
   width: 100%;
   padding: 4px 8px;
   font-size: 14px;
+  color: var(--light);
+  background-color: var(--dark-dim);
   border: 2px solid var(--main);
   border-radius: 4px;
+
+  &::-moz-placeholder {
+    color: var(--light);
+  }
+
+  &::-webkit-input-placeholder {
+    color: var(--light);
+  }
+
+  &::placeholder {
+    color: var(--light);
+  }
 }
