@@ -3,10 +3,10 @@ import React, { useState } from 'react'
 export const useFetch = (fetchData, onError) => {
   const [isLoading, setIsLoading] = useState(false)
 
-  const createRequest = async () => {
+  const createRequest = async (...args) => {
     try {
       setIsLoading(true)
-      await fetchData()
+      await fetchData(...args)
     } catch (error) {
       onError(
         <>

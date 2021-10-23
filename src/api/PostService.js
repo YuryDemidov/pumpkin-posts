@@ -12,7 +12,7 @@ export default class PostService {
 
     posts.map(post => {
       const now = Date.now()
-      const timestamp = Math.floor(now - Math.random() * Math.round(now / 10))
+      const timestamp = Math.floor(now - post.id * Math.round(now / 1000))
       post.id = timestamp
       post.date = new Date(timestamp)
       return post

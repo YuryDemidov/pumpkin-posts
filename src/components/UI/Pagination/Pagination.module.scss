@@ -1,0 +1,24 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pageButton {
+  min-width: 38px;
+  margin: 0 4px;
+  padding: 4px 9px;
+  font-weight: 300;
+  border-width: 1px;
+
+  &:hover:not(.active) {
+    color: var(--additional);
+    border-color: var(--additional);
+  }
+}
+
+.active {
+  font-weight: 700;
+  color: var(--main);
+  border: 2px solid var(--main);
+}
