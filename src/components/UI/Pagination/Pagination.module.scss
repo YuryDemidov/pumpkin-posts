@@ -2,12 +2,13 @@
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  padding: 0;
 }
 
 .pageButton {
-  min-width: 38px;
+  min-width: 32px;
   margin: 0 4px;
-  padding: 4px 9px;
+  padding: 4px 6px;
   font-weight: 300;
   border: 1px solid var(--light);
   color: var(--light);

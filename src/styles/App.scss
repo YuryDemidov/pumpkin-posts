@@ -78,6 +78,10 @@ body {
   border-bottom: 1px solid var(--light);
 }
 
+.logo {
+  margin-right: auto;
+}
+
 .main-heading {
   font-size: 36px;
 }
@@ -265,4 +269,16 @@ body {
 .error-page {
   text-align: center;
   font-size: 30px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 20px auto;
+
+  > * {
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
 }

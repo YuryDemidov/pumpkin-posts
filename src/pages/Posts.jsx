@@ -34,7 +34,7 @@ const Posts = () => {
   const [modalContent, setModalContent] = useState('')
   const [totalPages, setTotalPages] = useState(0)
   const [page, setPage] = useState(1)
-  const [postsPerPage] = useState(15)
+  const [postsPerPage, setPostsPerPage] = useState(15)
   const [fetchPosts, isShowLoader] = useFetch(async (page, perPage) => {
     const { data: posts, headers } = await PostService.getAll(page, perPage)
     setPosts(posts)
@@ -65,7 +65,13 @@ const Posts = () => {
         <Loader />
       ) : (
         <>
-          <Filters filter={filter} setFilter={setFilter} sortingOptions={SORTING_OPTIONS} />
+          <Filters
+            filter={filter}
+            setFilter={setFilter}
+            postsPerPage={postsPerPage}
+            setPostsPerPage={setPostsPerPage}
+            sortingOptions={SORTING_OPTIONS}
+          />
           <PostsList posts={filteredPosts} startNumber={(page - 1) * postsPerPage + 1} removePost={removePost} />
           <Pagination totalPages={totalPages} currentPage={page} setPage={changePage} />
         </>

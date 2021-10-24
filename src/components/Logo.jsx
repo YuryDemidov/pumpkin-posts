@@ -1,11 +1,14 @@
 import React from 'react'
 
+import { Link } from 'react-router-dom'
 import logo from '../images/logo.png'
 
 const Logo = () => {
   return (
     <div className='logo'>
-      <img src={logo} alt='Pumpkin Posts' height={48} />
+      <Link to='/'>
+        <img src={logo} alt='Pumpkin Posts' height={48} />
+      </Link>
     </div>
   )
 }
